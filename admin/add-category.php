@@ -1,0 +1,194 @@
+<?php
+session_start();
+include('../connection.php');
+
+if(isset($_POST['sub']))
+{
+ 
+    $category=$_POST['category'];
+    
+
+       mysqli_query($conn,"INSERT INTO category(category) VALUES('$category')");
+       echo "<script> alert('New category added');</script>";
+       echo "<script> window.location.href='view-category.php'</script>";
+}
+
+
+
+?>
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Add notification</title>
+    <meta name="description" content="Sufee Admin - HTML5 Admin Template">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="apple-touch-icon" href="apple-icon.png">
+    <link rel="shortcut icon" href="favicon.ico">
+
+
+    <link rel="stylesheet" href="vendors/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="vendors/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="vendors/themify-icons/css/themify-icons.css">
+    <link rel="stylesheet" href="vendors/flag-icon-css/css/flag-icon.min.css">
+    <link rel="stylesheet" href="vendors/selectFX/css/cs-skin-elastic.css">
+
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
+
+    <style type="text/css">
+        #b1{margin-left: 0%;} 
+        #frm{margin-left: 20%;}
+    </style>
+
+
+
+</head>
+
+<body>
+    <!-- Left Panel -->
+
+    <?php include 'leftpanel.php' ?>
+
+   <!-- /#left-panel -->
+
+    <!-- Left Panel -->
+
+    <!-- Right Panel -->
+
+    <div id="right-panel" class="right-panel">
+
+        <!-- Header-->
+
+        <?php include 'nav.php' ?>
+
+
+       <!-- /header -->
+        <!-- Header-->
+
+        <div class="breadcrumbs">
+            <div class="col-sm-4">
+                <div class="page-header float-left">
+                    <div class="page-title">
+                        <h1>CATEGORIES</h1>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+
+        <div class="content mt-3">
+            <div class="animated fadeIn">
+
+
+                
+                   
+                    <!--/.col-->
+
+                   
+
+                                            <div class="col-lg-9" id="frm" align="center" style="margin-left: 100px;">
+                                                <div class="card">
+                                                    <div class="card-header" align="center">
+                                                        <strong>CATEGORIES</strong>
+                                                    </div>
+                                                    <div class="card-body card-block">
+                                                        <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
+                                                              
+                                                            
+                                                            <div class="row form-group">
+                                                                <div class="col col-md-3"><label for="text-input" class=" form-control-label">Category</label></div>
+                                                                <div class="col-12 col-md-9"><input type="text" id="title" name="category" class="form-control" onclick="clearerror('stitle')"><span id="stitle" style="color: red"></span></div>
+                                                            </div>
+
+                                                           
+
+                                                           
+                                                            
+
+                                                            
+                                                             
+
+                                                          
+
+                                                              
+                                                             
+                                                       <button type="submit" name="sub" id="b1" onclick="return validate()" class="btn btn-primary btn-sm">
+                                                            <i class="fa fa-dot-circle-o"></i> Post
+                                                        </button>
+                                                        <button type="reset" id="b2" class="btn btn-danger btn-sm">
+                                                            <i class="fa fa-ban"></i> Cancel
+                                                        </button>
+                                                 
+                                                               
+                                                             
+                                                               
+                                                        </form>
+                                                    </div>
+                                                   
+                                                </div>
+                                              
+                                            </div>
+
+                                           
+
+
+                            
+
+
+                                            
+                                        </div><!-- .animated -->
+                                    </div><!-- .content -->
+                                </div><!-- /#right-panel -->
+                                <!-- Right Panel -->
+
+
+                            <script src="vendors/jquery/dist/jquery.min.js"></script>
+                            <script src="vendors/popper.js/dist/umd/popper.min.js"></script>
+
+                            <script src="vendors/jquery-validation/dist/jquery.validate.min.js"></script>
+                            <script src="vendors/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.min.js"></script>
+
+                            <script src="vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+                            <script src="assets/js/main.js"></script>
+                            <script type="text/javascript">
+                                function validate()
+                                {
+                                    var vcamp=document.getElementById("camp").value;
+                                     var vtitle=document.getElementById("title").value;
+                                      var vmsg=document.getElementById("message").value;
+
+                                      if(vcamp==0)
+                                      {
+                                        document.getElementById("scamp").innerHTML="*empty field";
+                                        return false;
+                                      }
+                                      if(vtitle==0)
+                                      {
+                                        document.getElementById("stitle").innerHTML="* empty feild";
+                                        return false;
+                                      }
+                                      if(vmsg==0)
+                                      {
+                                        document.getElementById("smessage").innerHTML="* empty field";
+                                        return false;
+                                      }
+                                }
+                            </script>
+                            <script type="text/javascript">
+                                function clearerror(ee)
+                                {
+                                    document.getElementById(ee).innerHTML="";
+                                }
+                            </script>
+</body>
+</html>
